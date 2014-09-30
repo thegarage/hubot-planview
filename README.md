@@ -27,6 +27,12 @@ Confirm that hubot-planview appears as a dependency in your Hubot package.json f
 }
 ```
 
+Add hubot-planview to your external-scripts.json:
+
+```
+["hubot-planview"]
+```
+
 ## Contributing
 
 Feel free! Send a pull request :)
