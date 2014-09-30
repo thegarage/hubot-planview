@@ -1,0 +1,32 @@
+{
+  "name": "hubot-planview",
+  "version": "1.0.0",
+  "description": "Hubot plugin for planview notifications",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thegarage/hubot-planview.git"
+  },
+  "keywords": [
+    "github",
+    "hubot",
+    "campfire",
+    "bot"
+  ],
+  "author": "Ryan Sonnek",
+  "license": "MIT",
+  "dependencies": {
+    "cron": "~1.0.4",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "hubot": "2.x",
+    "hubot-mock-adapter": "1.x",
+    "coffee-script": "*",
+    "chai": "1.x",
+    "mocha": "1.x"
+  }
+}
