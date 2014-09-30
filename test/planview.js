@@ -6,7 +6,7 @@ var expect = chai.expect;
 var Robot = require("hubot/src/robot");
 var TextMessage = require("hubot/src/message").TextMessage;
 
-describe('help', function() {
+describe('planview listener', function() {
   var robot = null
   var adapter = null;
   var user = null;
@@ -17,7 +17,8 @@ describe('help', function() {
     robot.adapter.on('connected', function() {
       robot.loadFile(path.resolve('.', 'scripts'), 'planview.js');
       var hubotScripts = path.resolve('node_modules', 'hubot', 'src', 'scripts');
-      robot.loadFile(hubotScripts, 'help.coffee');
+      // load any relevant hubot scripts here
+      // robot.loadFile(hubotScripts, 'help.coffee');
 
       // create a user
       user = robot.brain.userForId("1", {
@@ -34,11 +35,22 @@ describe('help', function() {
     robot.shutdown();
   });
 
-  it('should parse help', function(done) {
-    adapter.on("reply", function(envelope, strings) {
-      expect(strings[0]).match(/Why hello there/);
-      done();
+  describe('when message is lowercase', function() {
+    it('replies with random remark', function(done) {
+      adapter.on("reply", function(envelope, strings) {
+        expect(strings[0]).match(/planview/i);
+        done();
+      });
+      adapter.receive(new TextMessage(user, "I sure do love planview."));
     });
-    adapter.receive(new TextMessage(user, "Computer!"));
+  });
+  describe('when message is uppercase', function() {
+    it('replies with random remark', function(done) {
+      adapter.on("reply", function(envelope, strings) {
+        expect(strings[0]).match(/planview/i);
+        done();
+      });
+      adapter.receive(new TextMessage(user, "I sure do love PLANVIEW!"));
+    });
   });
 });
