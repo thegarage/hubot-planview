@@ -1,6 +1,6 @@
 {
   "name": "hubot-planview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hubot plugin for planview notifications",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "cron": "~1.0.4",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "time": "*"
   },
   "devDependencies": {
     "hubot": "2.x",
