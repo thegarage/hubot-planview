@@ -53,4 +53,13 @@ describe('planview listener', function() {
       adapter.receive(new TextMessage(user, "I sure do love PLANVIEW!"));
     });
   });
+  describe('when asking Hubot to be honest', function() {
+    it('replies with its genuine feelings about Planview', function(done) {
+      adapter.on("reply", function(envelope, strings) {
+        expect(strings[0]).match(/steaming pile/i);
+        done();
+      });
+      adapter.receive(new TextMessage(user, "Hubot, tell us how you really feel about planview."));
+    })
+  });
 });
