@@ -59,7 +59,7 @@ describe('planview listener', function() {
         expect(strings[0]).match(/steaming pile/i);
         done();
       });
-      adapter.receive(new TextMessage(user, "Hubot, tell us how you really feel about planview."));
-    })
+      adapter.receive(new TextMessage(user, "Hubot, tell us how you really feel."));
+    });
   });
 });
