@@ -35,5 +35,10 @@ Add hubot-planview to your external-scripts.json:
 
 ## Contributing
 
+Running Unit Tests:
+```bash
+$ npm test
+```
+
 Feel free! Send a pull request :)
 

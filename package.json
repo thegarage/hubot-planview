@@ -20,14 +20,15 @@
   "license": "MIT",
   "dependencies": {
     "cron": "~1.0.4",
-    "underscore": "~1.6.0",
-    "time": "*"
+    "time": "*",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "hubot": "2.x",
     "hubot-mock-adapter": "1.x",
     "coffee-script": "*",
     "chai": "1.x",
-    "mocha": "1.x"
+    "mocha": "1.x",
+    "sinon": "*"
   }
 }

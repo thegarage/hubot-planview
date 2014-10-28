@@ -1,6 +1,7 @@
 require('coffee-script/register');
 var path = require("path");
 var chai = require('chai');
+var sinon = require('sinon');
 var expect = chai.expect;
 
 var Robot = require("hubot/src/robot");
@@ -10,6 +11,18 @@ describe('planview listener', function() {
   var robot = null
   var adapter = null;
   var user = null;
+  var room = null;
+  var clock = null;
+  process.env.HUBOT_PLANVIEW_ROOMS = '#mocha';
+
+  beforeEach(function() {
+    //in GMT
+    var time = new Date('October 24, 2014 18:59:00');
+    clock = sinon.useFakeTimers(time.getTime());
+  });
+  afterEach(function () {
+    clock.restore();
+  });
 
   beforeEach(function(done) {
     var ready = false;
@@ -53,6 +66,7 @@ describe('planview listener', function() {
       adapter.receive(new TextMessage(user, "I sure do love PLANVIEW!"));
     });
   });
+
   describe('when asking Hubot to be honest', function() {
     it('replies with its genuine feelings about Planview', function(done) {
       adapter.on("reply", function(envelope, strings) {
@@ -60,6 +74,17 @@ describe('planview listener', function() {
         done();
       });
       adapter.receive(new TextMessage(user, "Hubot, tell us how you really feel."));
+    });
+  });
+
+  describe('when its Friday at 2:00pm', function() {
+    it('sends a planview alert', function(done) {
+      adapter.on("send", function(envelope, strings) {
+        console.log('called', new Date());
+        expect(strings[0]).match(/@all planview alert!/i);
+        done();
+      });
+      clock.tick(163186981);
     });
   });
 });
