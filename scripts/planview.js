@@ -19,7 +19,7 @@ module.exports = function(robot) {
   }
 
   function beHonest() {
-    return 'Ok, ok, Planview is a steaming pile of portfolio management and project collaboration.'
+    return 'Ok, ok, Planview is a steaming pile of portfolio management and project collaboration.';
   }
 
   function randomImage() {
