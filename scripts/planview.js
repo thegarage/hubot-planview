@@ -18,6 +18,10 @@ module.exports = function(robot) {
     return _.sample(REMARKS);
   }
 
+  function beHonest() {
+    return 'Ok, ok, Planview is a steaming pile of portfolio management and project collaboration.';
+  }
+
   function randomImage() {
     return _.sample(IMAGES);
   }
@@ -35,6 +39,10 @@ module.exports = function(robot) {
 
   robot.hear(/planview/i, function(msg) {
     msg.reply(randomRemark());
+  });
+
+  robot.hear(/tell us how you really feel/, function(msg) {
+    msg.reply(beHonest());
   });
 
   var job = new CronJob('0 14 * * 5', planviewAlert, null, true, 'America/Chicago');
